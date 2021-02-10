@@ -13,6 +13,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -24,6 +25,8 @@ import static androidx.core.content.ContextCompat.getSystemService;
  * create an instance of this fragment.
  */
 public class FrgAccelerometer extends Fragment implements SensorEventListener {
+    SensorEventListener sensorEventListener;
+    Button btnPlay, btnStop;
     TextView xa,ya,za;
     private SensorManager manejador;
     private Sensor acelerometro;
@@ -41,14 +44,7 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FrgAccelerometer.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static FrgAccelerometer newInstance(String param1, String param2) {
         FrgAccelerometer fragment = new FrgAccelerometer();
@@ -62,12 +58,10 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ///////
         // Se obtiene el servicio del sistema
         manejador = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
         // Obtener el sensor
         acelerometro = manejador.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        ///////
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -77,11 +71,27 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View vista= inflater.inflate(R.layout.fragment_frg_accelerometer, container, false);
         xa = (TextView) vista.findViewById(R.id.txtXacelerometer);
         ya = (TextView) vista.findViewById(R.id.txtYacelerometer);
         za = (TextView) vista.findViewById(R.id.txtZacelerometer);
+
+        btnPlay = vista.findViewById(R.id.btnPacelerometro);
+        btnStop = vista.findViewById(R.id.btnSacelerometro);
+
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onResume();
+            }
+        });
+
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPause();
+            }
+        });
 
 
         return vista;
@@ -93,7 +103,6 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
         float valor_y = event.values[1];
         float valor_z = event.values[2];
         xa.setText(valor_x+" ");
-        //System.out.println("hhhhhhhhh"+x);
         ya.setText(valor_y+" ");
         za.setText(valor_z+" ");
     }
@@ -102,6 +111,17 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+    public void start(){
+        //manejador.registerListener(sensorEventListener,acelerometro,2000*1000);
+        manejador.registerListener(this,acelerometro, manejador.SENSOR_DELAY_NORMAL);
+    }
+
+    public void stop(){
+        manejador.unregisterListener(sensorEventListener);
+        //manejador.unregisterListener(SensorEventListener, acelerometro);
+    }
+
 
     @Override
     public void onResume() {
@@ -114,5 +134,18 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
         super.onPause();
         manejador.unregisterListener(this);
     }
+
+    /*@Override
+    public void onResume() {
+        start();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        stop();
+        super.onPause();
+    }
+*/
 
 }

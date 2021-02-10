@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -22,6 +23,7 @@ import static android.content.Context.SENSOR_SERVICE;
  * create an instance of this fragment.
  */
 public class FrgGyroscope extends Fragment implements SensorEventListener {
+    Button btnPlayProxi, btnStopProxi;
     TextView xg,yg,zg;
     private SensorManager manejador;
     private Sensor gyroscope;
@@ -79,6 +81,23 @@ public class FrgGyroscope extends Fragment implements SensorEventListener {
         xg = (TextView) vista.findViewById(R.id.txtXgyroscope);
         yg = (TextView) vista.findViewById(R.id.txtYgyroscope);
         zg =(TextView) vista.findViewById(R.id.txtZgyroscope);
+
+        btnPlayProxi = vista.findViewById(R.id.btnPgiroscopio);
+        btnStopProxi = vista.findViewById(R.id.btnSgiroscopio);
+
+        btnPlayProxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onResume();
+            }
+        });
+
+        btnStopProxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPause();
+            }
+        });
 
         return vista;
     }

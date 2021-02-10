@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -21,7 +22,9 @@ import static android.content.Context.SENSOR_SERVICE;
  * create an instance of this fragment.
  */
 public class FrgProximity extends Fragment implements SensorEventListener {
+    SensorEventListener sensorEventListener;
     TextView xp;
+    Button btnPlayProxi, btnStopProxi;
     private SensorManager manejador;
     private Sensor proximity;
 
@@ -51,16 +54,8 @@ public class FrgProximity extends Fragment implements SensorEventListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ///////
-        // Se obtiene el servicio del sistema
         manejador = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
-        // Obtener el sensor
         proximity = manejador.getDefaultSensor(Sensor.TYPE_PROXIMITY);
-        ///////
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -69,6 +64,22 @@ public class FrgProximity extends Fragment implements SensorEventListener {
         View vista= inflater.inflate(R.layout.fragment_frg_proximity, container, false);
         xp = (TextView) vista.findViewById(R.id.txtXProximity);
 
+        btnStopProxi = vista.findViewById(R.id.btnSproximidad);
+        btnPlayProxi = vista.findViewById(R.id.btnPproximidad);
+
+        btnPlayProxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onResume();
+            }
+        });
+
+        btnStopProxi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPause();
+            }
+        });
         return vista;
     }
 
@@ -83,9 +94,28 @@ public class FrgProximity extends Fragment implements SensorEventListener {
 
     }
 
-    @Override
+   /* @Override
     public void onResume() {
         super.onResume();
         manejador.registerListener(this,proximity, manejador.SENSOR_DELAY_NORMAL);
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        manejador.unregisterListener(this);
+    }
+*/
+   @Override
+   public void onResume() {
+       super.onResume();
+       manejador.registerListener(this,proximity, manejador.SENSOR_DELAY_NORMAL);
+   }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        manejador.unregisterListener(this);
+    }
+
 }
