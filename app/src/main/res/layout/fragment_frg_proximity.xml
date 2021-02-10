@@ -7,6 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".FrgProximity">
 
+    <Button
+        android:id="@+id/btnPproximidad"
+        android:layout_width="70dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="72dp"
+        android:text="play"
+
+
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSproximidad"
+        android:layout_width="70dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="play"
+
+
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPproximidad" />
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="94dp"
@@ -16,26 +44,28 @@
         android:text="Proximidad"
         app:layout_constraintBottom_toBottomOf="@+id/txtXProximity"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtXProximity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="92dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="78dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="96dp"
         android:text="X"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtXProximity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="93dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

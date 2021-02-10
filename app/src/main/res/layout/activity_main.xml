@@ -49,5 +49,4 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment1"
         tools:layout="@layout/fragment_frg_proximity"></fragment>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

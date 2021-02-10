@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,7 +103,7 @@ public class FrgGyroscope extends Fragment implements SensorEventListener {
         float valor_y = event.values[1];
         float valor_z = event.values[2];
         xg.setText(valor_x+" ");
-        //System.out.println("hhhhhhhhh"+x);
+
         yg.setText(valor_y+" ");
         zg.setText(valor_z+" ");
     }

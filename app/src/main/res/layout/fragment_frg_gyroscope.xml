@@ -7,6 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".FrgGyroscope">
 
+    <Button
+        android:id="@+id/btnPgiroscopio"
+        android:layout_width="70dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="60dp"
+        android:text="play"
+
+
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSgiroscopio"
+        android:layout_width="70dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:text="stop"
+
+
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPgiroscopio" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="170dp"
