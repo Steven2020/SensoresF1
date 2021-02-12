@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ import static androidx.core.content.ContextCompat.getSystemService;
  * create an instance of this fragment.
  */
 public class FrgAccelerometer extends Fragment implements SensorEventListener {
+    public final String tag =  FrgGyroscope.class.getName();
+
     SensorEventListener sensorEventListener;
     Button btnPlay, btnStop;
     TextView xa,ya,za;
@@ -125,27 +128,17 @@ public class FrgAccelerometer extends Fragment implements SensorEventListener {
 
     @Override
     public void onResume() {
+        Log.i(tag,"Start Accelerometer clicked");
         super.onResume();
         manejador.registerListener(this,acelerometro, manejador.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public void onPause() {
+        Log.i(tag,"Stop Accelerometer clicked");
         super.onPause();
         manejador.unregisterListener(this);
     }
 
-    /*@Override
-    public void onResume() {
-        start();
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        stop();
-        super.onPause();
-    }
-*/
 
 }

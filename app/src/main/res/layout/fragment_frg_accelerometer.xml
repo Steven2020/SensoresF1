@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".FrgAccelerometer">
 
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/acelerar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -14,6 +25,7 @@
         android:layout_marginTop="16dp"
         android:text="ACELEROMETRO"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

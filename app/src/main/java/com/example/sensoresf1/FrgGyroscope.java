@@ -23,6 +23,8 @@ import static android.content.Context.SENSOR_SERVICE;
  * create an instance of this fragment.
  */
 public class FrgGyroscope extends Fragment implements SensorEventListener {
+    public final String tag =  FrgGyroscope.class.getName();
+
     Button btnPlayProxi, btnStopProxi;
     TextView xg,yg,zg;
     private SensorManager manejador;
@@ -88,6 +90,7 @@ public class FrgGyroscope extends Fragment implements SensorEventListener {
         btnPlayProxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(tag,"Start Giroscopy clicked");
                 onResume();
             }
         });
@@ -95,6 +98,7 @@ public class FrgGyroscope extends Fragment implements SensorEventListener {
         btnStopProxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i(tag,"Stop Giroscopy clicked");
                 onPause();
             }
         });

@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import static android.content.Context.SENSOR_SERVICE;
  * create an instance of this fragment.
  */
 public class FrgProximity extends Fragment implements SensorEventListener {
+    public final String tag =  FrgGyroscope.class.getName();
+
     SensorEventListener sensorEventListener;
     TextView xp;
     Button btnPlayProxi, btnStopProxi;
@@ -108,12 +111,14 @@ public class FrgProximity extends Fragment implements SensorEventListener {
 */
    @Override
    public void onResume() {
+       Log.i(tag,"Start proximity clicked");
        super.onResume();
        manejador.registerListener(this,proximity, manejador.SENSOR_DELAY_NORMAL);
    }
 
     @Override
     public void onPause() {
+        Log.i(tag,"Stop proximity clicked");
         super.onPause();
         manejador.unregisterListener(this);
     }
